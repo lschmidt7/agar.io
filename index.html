@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <script src="js/Game.js"></script>
+        <script src="js/Player.js" ></script>
+        <title>Agar.io</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="1000" height="600" onmousemove="game.mousePos(event)">
+            
+        </canvas>
+    </body>
+</html>
+
+<script>
+    var game = new Game('canvas');
+
+    var player = new Player(game.ctx);
+
+    setInterval(UpdateGame,20);
+
+    function UpdateGame() {
+        game.clear();
+        player.move();
+        player.draw(game.ctx);
+    }
+
+</script>
