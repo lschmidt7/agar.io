@@ -1,9 +1,6 @@
 function Player(ctx) {
 
-    this.pos = {
-        x: 0,
-        y: 0
-    };
+    this.pos = new Vec2(0,0);
 
     this.size = 150;
     
@@ -17,7 +14,8 @@ function Player(ctx) {
     }
 
     this.move = function (target) {
-        
+        let dir = this.pos.sub(target).mul(-1).normalize();
+        this.pos = this.pos.add( dir.mul(this.velocity) );
     }
 
 }

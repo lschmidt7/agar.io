@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <script src="js/Vec2.js"></script>
         <script src="js/Game.js"></script>
         <script src="js/Player.js" ></script>
         <title>Agar.io</title>
@@ -18,11 +19,11 @@
 
     var player = new Player(game.ctx);
 
-    setInterval(UpdateGame,20);
+    setInterval(UpdateGame,10);
 
     function UpdateGame() {
         game.clear();
-        player.move();
+        player.move(game.mousePos);
         player.draw(game.ctx);
     }
 
