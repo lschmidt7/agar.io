@@ -26,9 +26,11 @@
     function UpdateGame() {
         game.clear();
         game.render();
-        let playerCell = game.indexCell(player.pos);
-        player.move(game.mousePos);
         player.draw(game.ctx);
+        let playerCell = game.indexCell(player.pos);
+        game.verify(playerCell.x,playerCell.y,player);
+        player.move(game.mousePos);
+        
     }
 
 </script>

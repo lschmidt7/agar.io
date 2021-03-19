@@ -39,7 +39,6 @@ function Game(canvasName, cellGrid){
 
     // spawn dots
     this.init = function () {
-        console.log("rows: " + this.grid.rows + ", cols: " + this.grid.cols);
         for (let i = 0; i < this.grid.rows; i++) {
             this.dots.push([]);
             for (let j = 0; j < this.grid.cols; j++) {
@@ -71,6 +70,16 @@ function Game(canvasName, cellGrid){
         let i = Math.floor(pos.x / this.grid.cell.x);
         let j = Math.floor(pos.y / this.grid.cell.y);
         return new Vec2(i,j);
+    }
+
+    this.verify = function (i,j,player) {
+        let current_dots = this.dots[j][i];
+        for (let k = 0; k < current_dots.length; k++) {
+            let d = current_dots[k];
+            if(d.pos.distance(player.pos) < player.size){
+                this.dots[j][i].splice(k,1);
+            }
+        }
     }
         
 }
