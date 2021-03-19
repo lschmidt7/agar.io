@@ -81,6 +81,8 @@ function Game(canvasName, cellGrid, f, time){
         return new Vec2(i,j);
     }
 
+    // update the dots
+    // update the player size and velocity
     this.update = function (i,j,player) {
         let current_dots = this.dots[j][i];
         for (let k = 0; k < current_dots.length; k++) {
@@ -92,6 +94,7 @@ function Game(canvasName, cellGrid, f, time){
         }
     }
 
+    // play and pause the game
     this.changeState = function () {
         if(self.state == 0)
         {
