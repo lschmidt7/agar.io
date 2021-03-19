@@ -1,8 +1,8 @@
 function Player(ctx) {
 
-    this.pos = new Vec2(0,0);
+    this.pos = new Vec2(200,200);
 
-    this.size = 150;
+    this.size = 30;
     
     this.velocity = 1;
 
