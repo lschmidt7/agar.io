@@ -7,12 +7,19 @@ function Player(ctx) {
 
     this.pos = new Vec2(200,200);
 
-    this.size = 10;
+    this.size = {
+        current: 10,
+        grow_rate: 0.1
+    }
     
-    this.velocity = 1;
+    this.velocity = {
+        current: 1, 
+        min: 0.2, 
+        max: 1 ,
+        decay_rate: 0.01
+    }
 
-    this.velocity_limits = {"min": 0.2, "max":1}
-
+    // draw the player
     this.draw = function () {
         ctx.beginPath();
         ctx.fillStyle = "#FF0000";
@@ -20,17 +27,21 @@ function Player(ctx) {
         ctx.fill();
     }
 
-    // move player in direction of mousePos
+    // move player in direction of mouse position
     this.move = function (target) {
         let dir = this.pos.sub(target).mul(-1).normalize();
         this.pos = this.pos.add( dir.mul(this.velocity) );
     }
 
+    // player eats a dot
+    // player grows according to the growth rate
+    // player lose velocity according to the decay rate
     this.grow = function (dotSize) {
-        this.size+=0.1*dotSize;
+        this.size.current += this.size.grow_rate * dotSize;
         
-        if(this.velocity-0.01 > this.velocity_limits.min){
-            this.velocity-=0.01
+        if( this.velocity.current - this.velocity.decay_rate > this.velocity.min )
+        {
+            this.velocity.current -= this.velocity.decay_rate
         }
     }
 
