@@ -11,6 +11,8 @@ function Player(ctx) {
     
     this.velocity = 1;
 
+    this.velocity_limits = {"min": 0.2, "max":1}
+
     this.draw = function () {
         ctx.beginPath();
         ctx.fillStyle = "#FF0000";
@@ -24,8 +26,12 @@ function Player(ctx) {
         this.pos = this.pos.add( dir.mul(this.velocity) );
     }
 
-    this.grow = function () {
-        this.size+=0.5;
+    this.grow = function (dotSize) {
+        this.size+=0.1*dotSize;
+        
+        if(this.velocity-0.01 > this.velocity_limits.min){
+            this.velocity-=0.01
+        }
     }
 
 }
