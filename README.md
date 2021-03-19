@@ -1,7 +1,5 @@
 # Agar.io
 
-# my version of Agar.io game
-
 Tarefas
 
 - verificar pontos atingidos em celulas vizinhas

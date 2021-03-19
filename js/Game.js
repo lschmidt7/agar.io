@@ -3,7 +3,7 @@
 //*************************
 
 // class that manage the game
-function Game(canvasName, cellGrid){
+function Game(canvasName, cellGrid, f, time){
     
     // configure canvas to fit window
     this.canvas = document.getElementById(canvasName);
@@ -13,17 +13,26 @@ function Game(canvasName, cellGrid){
     // get canvas 2d context
     this.ctx = this.canvas.getContext('2d');
 
+    this.interval = null;
+
+    this.f = f;
+    this.time = time;
+
     // mouse position on screen
     this.mousePos = new Vec2(0,0);
 
+    this.state = 0
+
     // array of dots
-    this.dots = []
+    this.dots = [];
 
     this.grid = {
         cell: cellGrid,
         cols: Math.ceil(window.innerWidth / cellGrid.x),
         rows: Math.ceil(window.innerHeight / cellGrid.y)
     }
+
+    var self = this;
 
     // clear screen to redraw
     this.clear = function () {
@@ -82,5 +91,18 @@ function Game(canvasName, cellGrid){
             }
         }
     }
-        
+
+    this.changeState = function () {
+        if(self.state == 0)
+        {
+            self.interval = setInterval(self.f,self.time);
+            self.state = 1;
+        }
+        else
+        {
+            clearInterval(self.interval);
+            self.state = 0;
+        }
+    }
+
 }
