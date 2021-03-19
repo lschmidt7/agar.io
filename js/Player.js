@@ -7,7 +7,7 @@ function Player(ctx) {
 
     this.pos = new Vec2(200,200);
 
-    this.size = 30;
+    this.size = 10;
     
     this.velocity = 1;
 
@@ -22,6 +22,10 @@ function Player(ctx) {
     this.move = function (target) {
         let dir = this.pos.sub(target).mul(-1).normalize();
         this.pos = this.pos.add( dir.mul(this.velocity) );
+    }
+
+    this.grow = function () {
+        this.size+=0.5;
     }
 
 }

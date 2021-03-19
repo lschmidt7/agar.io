@@ -38,14 +38,14 @@ function Game(canvasName, cellGrid){
     }
 
     // spawn dots
-    this.init = function () {
+    this.init = function (countDots) {
         for (let i = 0; i < this.grid.rows; i++) {
             this.dots.push([]);
             for (let j = 0; j < this.grid.cols; j++) {
                 this.dots[i].push([]);
             }
         }
-        for (let i in [...Array(100).keys()]) {
+        for (let i in [...Array(countDots).keys()]) {
             let x = Math.floor(Math.random() * this.canvas.width);
             let y = Math.floor(Math.random() * this.canvas.height);
             let cell = this.indexCell(new Vec2(x,y));
@@ -72,12 +72,13 @@ function Game(canvasName, cellGrid){
         return new Vec2(i,j);
     }
 
-    this.verify = function (i,j,player) {
+    this.update = function (i,j,player) {
         let current_dots = this.dots[j][i];
         for (let k = 0; k < current_dots.length; k++) {
             let d = current_dots[k];
             if(d.pos.distance(player.pos) < player.size){
                 this.dots[j][i].splice(k,1);
+                player.grow();
             }
         }
     }
