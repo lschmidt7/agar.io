@@ -16,7 +16,7 @@
 </html>
 
 <script>
-    var game = new Game('canvas');
+    var game = new Game('canvas', new Vec2(100,100));
     game.init();
 
     var player = new Player(game.ctx);
@@ -26,6 +26,7 @@
     function UpdateGame() {
         game.clear();
         game.render();
+        let playerCell = game.indexCell(player.pos);
         player.move(game.mousePos);
         player.draw(game.ctx);
     }

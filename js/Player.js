@@ -1,3 +1,8 @@
+//*************************
+// author: Leonardo Schmidt
+//*************************
+
+// player class
 function Player(ctx) {
 
     this.pos = new Vec2(200,200);
@@ -13,6 +18,7 @@ function Player(ctx) {
         ctx.fill();
     }
 
+    // move player in direction of mousePos
     this.move = function (target) {
         let dir = this.pos.sub(target).mul(-1).normalize();
         this.pos = this.pos.add( dir.mul(this.velocity) );

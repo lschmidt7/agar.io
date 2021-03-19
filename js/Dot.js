@@ -1,9 +1,13 @@
+//*************************
+// author: Leonardo Schmidt
+//*************************
 
+// class of Dots
 function Dot(x,y,ctx) {
     
     this.pos = new Vec2(x,y);
 
-    this.size = 5;
+    this.size = 3;
 
     this.draw = function () {
         ctx.beginPath();
