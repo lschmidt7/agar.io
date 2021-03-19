@@ -15,7 +15,7 @@ function Player(ctx) {
     this.velocity = {
         current: 1, 
         min: 0.2, 
-        max: 1 ,
+        max: 1,
         decay_rate: 0.01
     }
 
@@ -23,14 +23,14 @@ function Player(ctx) {
     this.draw = function () {
         ctx.beginPath();
         ctx.fillStyle = "#FF0000";
-        ctx.arc(this.pos.x,this.pos.y, this.size, 0, 2*Math.PI, false);
+        ctx.arc(this.pos.x,this.pos.y, this.size.current, 0, 2*Math.PI, false);
         ctx.fill();
     }
 
     // move player in direction of mouse position
     this.move = function (target) {
         let dir = this.pos.sub(target).mul(-1).normalize();
-        this.pos = this.pos.add( dir.mul(this.velocity) );
+        this.pos = this.pos.add( dir.mul(this.velocity.current) );
     }
 
     // player eats a dot

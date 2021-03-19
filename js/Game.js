@@ -76,7 +76,7 @@ function Game(canvasName, cellGrid){
         let current_dots = this.dots[j][i];
         for (let k = 0; k < current_dots.length; k++) {
             let d = current_dots[k];
-            if(d.pos.distance(player.pos) < player.size){
+            if(d.pos.distance(player.pos) < player.size.current){
                 this.dots[j][i].splice(k,1);
                 player.grow(d.size);
             }
