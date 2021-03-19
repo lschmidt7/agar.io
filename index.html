@@ -5,7 +5,9 @@
         <title>Agar.io</title>
     </head>
     <body>
-        <input type="checkbox" onclick="helper.changeState()"/> <label>Grid</label>
+        <div id="settings">
+            <input type="checkbox" onclick="helper.changeState()"/> <label>Grid</label>
+        </div>
         <canvas id="canvas" onmousemove="game.setMousePos(event)">
             
         </canvas>
