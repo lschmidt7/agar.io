@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
         <script src="js/Vec2.js"></script>
+        <script src="js/Dot.js"></script>
         <script src="js/Game.js"></script>
         <script src="js/Player.js" ></script>
         <title>Agar.io</title>
@@ -16,6 +17,7 @@
 
 <script>
     var game = new Game('canvas');
+    game.init();
 
     var player = new Player(game.ctx);
 
@@ -23,6 +25,7 @@
 
     function UpdateGame() {
         game.clear();
+        game.render();
         player.move(game.mousePos);
         player.draw(game.ctx);
     }

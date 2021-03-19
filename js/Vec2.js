@@ -35,4 +35,8 @@ function Vec2(x,y) {
         return this.div(this.mag());
     }
 
+    this.distance = function (v) {
+        return Math.sqrt( Math.pow(v.x - this.x , 2) + Math.pow(v.y - this.y , 2) );
+    }
+
 }
