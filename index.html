@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
         <title>Agar.io</title>
     </head>
     <body>
-        <div id="settings">
-            <input type="checkbox" onclick="helper.changeDraw('grid')"/> <label>Grid</label>
-            <br>
-            <input type="checkbox" onclick="helper.changeDraw('cell')"/> <label>Cell</label>
+        <div id="header">
+            <div class="card text-center content">
+                <h5 class="card-header">Settings</h5>
+                <div class="card-body">
+                    <input type="checkbox" onclick="helper.changeDraw('grid')"/> <label>Grid</label>
+                    <br>
+                    <input type="checkbox" onclick="helper.changeDraw('cell')"/> <label>Cell</label>
+                </div>
+            </div>
+            <div style="flex: 9">
+
+            </div>
+            <div class="card content text-center">
+                <h5 class="card-header">Info</h5>
+                <div class="card-body">
+                    <p>Score: </p>
+                    <p>Size: </p>
+                </div>
+            </div>
         </div>
         <canvas id="canvas" onmousemove="game.setMousePos(event)">
             

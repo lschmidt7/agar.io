@@ -47,4 +47,8 @@ function Helper(game, player){
         game.ctx.fill();
     }
 
+    this.drawPlayerForward = function () {
+
+    }
+
 }

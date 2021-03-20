@@ -31,7 +31,7 @@ function Player(ctx) {
 
     // move player in direction of mouse position
     this.move = function (target) {
-        let dir = this.pos.sub(target).mul(-1).normalize();
+        let dir = target.sub(this.pos).normalize();
         this.pos = this.pos.add( dir.mul(this.velocity.current) );
     }
 
@@ -47,6 +47,7 @@ function Player(ctx) {
         }
     }
 
+    // gets the bounds coordinates of player
     this.bounds = function () {
         return {
             top_left: this.pos.sub(this.size.current),
