@@ -46,12 +46,21 @@ function Helper(game, player){
     }
 
     this.drawCell = function () {
-        let pc = game.indexCell(player.pos);
-        game.ctx.beginPath();
-        game.ctx.lineWidth = "2";
-        game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
-        game.ctx.rect(pc.x * game.grid.cell.x, pc.y * game.grid.cell.y, game.grid.cell.x,game.grid.cell.y);
-        game.ctx.fill();
+        let bounds = player.bounds()
+        let cells = []
+        
+        cells.push( game.indexCell(bounds.top_left) );
+        cells.push( game.indexCell(bounds.top_right) );
+        cells.push( game.indexCell(bounds.bot_left) );
+        cells.push( game.indexCell(bounds.bot_right) );
+
+        for (let i = 0; i < cells.length; i++) {
+            game.ctx.beginPath();
+            game.ctx.lineWidth = "2";
+            game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
+            game.ctx.rect(cells[i].x * game.grid.cell.x, cells[i].y * game.grid.cell.y, game.grid.cell.x, game.grid.cell.y);
+            game.ctx.fill();   
+        }
     }
 
     this.drawPlayerForward = function () {
@@ -59,7 +68,7 @@ function Helper(game, player){
         game.ctx.lineWidth = "2";
         game.ctx.strokeStyle = player.color;
         game.ctx.moveTo(player.pos.x, player.pos.y);
-        let to = player.pos.add(player.dir.mul(50));
+        let to = player.pos.add(player.dir.mul(player.size.current * 2));
         game.ctx.lineTo(to.x,to.y);
         game.ctx.stroke();
     }
