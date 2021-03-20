@@ -13,6 +13,10 @@
                     <input type="checkbox" onclick="helper.changeDraw('grid')"/> <label>Grid</label>
                     <br>
                     <input type="checkbox" onclick="helper.changeDraw('cell')"/> <label>Cell</label>
+                    <br>
+                    <input type="checkbox" onclick="helper.changeDraw('dir')"/> <label>Dir</label>
+                    <br>
+                    <input type="checkbox" onclick="helper.changeDraw('bounds')"/> <label>Bounds</label>
                 </div>
             </div>
             <div style="flex: 9;">
@@ -21,8 +25,9 @@
             <div class="card content text-center">
                 <h5 class="card-header">Info</h5>
                 <div class="card-body">
-                    <p>Score: </p>
-                    <p>Size: </p>
+                    <p id="score"><b>Score:</b> </p>
+                    <p id="size"><b>Size:</b> </p>
+                    <p id="vel"><b>Velocity:</b> </p>
                 </div>
             </div>
         </div>

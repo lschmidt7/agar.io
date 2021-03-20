@@ -6,6 +6,7 @@
 function Player(ctx) {
 
     this.pos = new Vec2(200,200);
+    this.dir = new Vec2(0,0);
 
     this.color = 'green';
 
@@ -31,8 +32,10 @@ function Player(ctx) {
 
     // move player in direction of mouse position
     this.move = function (target) {
-        let dir = target.sub(this.pos).normalize();
-        this.pos = this.pos.add( dir.mul(this.velocity.current) );
+        this.dir = target.sub(this.pos).normalize();
+        this.pos = this.pos.add( this.dir.mul(this.velocity.current) );
+
+        document.getElementById('size').innerHTML = "<b>Size:</b> " + this.size.current.toFixed(1);
     }
 
     // player eats a dot
@@ -50,10 +53,10 @@ function Player(ctx) {
     // gets the bounds coordinates of player
     this.bounds = function () {
         return {
-            top_left: this.pos.sub(this.size.current),
+            top_left: this.pos.subScalar(this.size.current),
             top_right: new Vec2(this.pos.x + this.size.current, this.pos.y - this.size.current),
             bot_left: new Vec2(this.pos.x - this.size.current, this.pos.y + this.size.current),
-            bot_right: this.pos.add(this.size.current)
+            bot_right: this.pos.addScalar(this.size.current)
         }
     }
 

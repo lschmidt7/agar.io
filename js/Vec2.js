@@ -19,6 +19,18 @@ function Vec2(x,y) {
         return new Vec2(x,y);
     }
 
+    this.addScalar = function (v) {
+        let x = this.x + v;
+        let y = this.y + v;
+        return new Vec2(x,y);
+    }
+
+    this.subScalar = function (v) {
+        let x = this.x - v;
+        let y = this.y - v;
+        return new Vec2(x,y);
+    }
+
     this.mul = function (h) {
         let x = this.x * h;
         let y = this.y * h;
