@@ -1,18 +1,22 @@
 
 
-function Helper(game){
+function Helper(game, player){
 
-    this.on = false;
-
-    this.draw = function () {
-        if(this.on){
-            this.drawGrid();
-        }
+    this.draw = {
+        'grid': false,
+        'cell': false
     }
 
-    this.changeState = function ()
+    this.draw = function () {
+        if(this.draw.grid)
+            this.drawGrid();
+        if(this.draw.cell)
+            this.drawCell();
+    }
+
+    this.changeDraw = function (field)
     {
-        this.on = !this.on;
+        this.draw[field] = !this.draw[field];
     }
 
     this.drawGrid = function () {
@@ -30,6 +34,15 @@ function Helper(game){
 		    game.ctx.lineTo(game.canvas.width, i * game.grid.cell.y);
 		    game.ctx.stroke();
         }
+    }
+
+    this.drawCell = function () {
+        let pc = game.indexCell(player.pos);
+        game.ctx.beginPath();
+        game.ctx.lineWidth = "2";
+        game.ctx.fillStyle = "rgba(0, 0, 255, 0.3)";
+        game.ctx.rect(pc.x * game.grid.cell.x,pc.y * game.grid.cell.y,game.grid.cell.x,game.grid.cell.y);
+        game.ctx.fill();
     }
 
 }

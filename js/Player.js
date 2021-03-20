@@ -45,4 +45,13 @@ function Player(ctx) {
         }
     }
 
+    this.bounds = function () {
+        return {
+            top_left: this.pos.sub(this.size.current),
+            top_right: new Vec2(this.pos.x + this.size.current, this.pos.y - this.size.current),
+            bot_left: new Vec2(this.pos.x - this.size.current, this.pos.y + this.size.current),
+            bot_right: this.pos.add(this.size.current)
+        }
+    }
+
 }
