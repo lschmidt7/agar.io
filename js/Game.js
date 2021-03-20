@@ -21,8 +21,6 @@ function Game(canvasName, cellGrid, f, time){
     // mouse position on screen
     this.mousePos = new Vec2(0,0);
 
-    this.state = 0
-
     // array of dots
     this.dots = [];
 
@@ -60,6 +58,8 @@ function Game(canvasName, cellGrid, f, time){
             let cell = this.indexCell(new Vec2(x,y));
             this.dots[cell.y][cell.x].push(new Dot(x,y,this.ctx));
         }
+
+        this.interval = setInterval(this.f,this.time);
         
     }
 
@@ -96,16 +96,11 @@ function Game(canvasName, cellGrid, f, time){
 
     // play and pause the game
     this.changeState = function () {
-        if(self.state == 0)
-        {
+        States.change();
+        if(States.current == States.PLAY)
             self.interval = setInterval(self.f,self.time);
-            self.state = 1;
-        }
         else
-        {
             clearInterval(self.interval);
-            self.state = 0;
-        }
     }
 
 }

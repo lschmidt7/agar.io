@@ -7,9 +7,9 @@ function Dot(x,y,ctx) {
     
     this.pos = new Vec2(x,y);
 
-    this.size = Math.random()*2+1;
+    this.size = Math.random() * 2 + 1;
 
-    this.color = ["blue","magenta","yellow","green"][Math.floor(Math.random()*4)];
+    this.color = ["blue","magenta","yellow","green","orange"][Math.floor(Math.random()*5)];
 
     this.draw = function () {
         ctx.beginPath();

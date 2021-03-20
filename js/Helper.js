@@ -1,4 +1,6 @@
-
+//*************************
+// author: Leonardo Schmidt
+//*************************
 
 function Helper(game, player){
 
@@ -40,7 +42,7 @@ function Helper(game, player){
         let pc = game.indexCell(player.pos);
         game.ctx.beginPath();
         game.ctx.lineWidth = "2";
-        game.ctx.fillStyle = "rgba(0, 0, 255, 0.3)";
+        game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
         game.ctx.rect(pc.x * game.grid.cell.x,pc.y * game.grid.cell.y,game.grid.cell.x,game.grid.cell.y);
         game.ctx.fill();
     }

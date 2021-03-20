@@ -14,7 +14,7 @@
             
         </canvas>
     </body>
-    
+    <script src="js/States.js"></script>
     <script src="js/Vec2.js"></script>
     <script src="js/Dot.js"></script>
     <script src="js/Game.js"></script>
@@ -32,7 +32,6 @@
         eventHandler.addKeyPress(' ',game.changeState);
 
         game.init(500);
-        game.changeState();
     
         function UpdateGame() {
             game.clear();

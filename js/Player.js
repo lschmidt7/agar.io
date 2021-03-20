@@ -7,6 +7,8 @@ function Player(ctx) {
 
     this.pos = new Vec2(200,200);
 
+    this.color = 'green';
+
     this.size = {
         current: 10,
         grow_rate: 0.1
@@ -22,7 +24,7 @@ function Player(ctx) {
     // draw the player
     this.draw = function () {
         ctx.beginPath();
-        ctx.fillStyle = "#FF0000";
+        ctx.fillStyle = this.color;
         ctx.arc(this.pos.x,this.pos.y, this.size.current, 0, 2*Math.PI, false);
         ctx.fill();
     }

@@ -1,3 +1,6 @@
+//*************************
+// author: Leonardo Schmidt
+//*************************
 
 function EventHandler() {
 
