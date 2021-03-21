@@ -72,7 +72,6 @@ function Game(canvasName, cellGrid, f, time){
                 }
             }
         }
-        
     }
 
     this.indexCell = function (pos) {

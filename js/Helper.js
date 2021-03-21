@@ -46,21 +46,22 @@ function Helper(game, player){
     }
 
     this.drawCell = function () {
-        let bounds = player.bounds()
-        let cells = []
         
-        cells.push( game.indexCell(bounds.top_left) );
-        cells.push( game.indexCell(bounds.top_right) );
-        cells.push( game.indexCell(bounds.bot_left) );
-        cells.push( game.indexCell(bounds.bot_right) );
+        let c = game.grid.cell;
 
-        for (let i = 0; i < cells.length; i++) {
-            game.ctx.beginPath();
-            game.ctx.lineWidth = "2";
-            game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
-            game.ctx.rect(cells[i].x * game.grid.cell.x, cells[i].y * game.grid.cell.y, game.grid.cell.x, game.grid.cell.y);
-            game.ctx.fill();   
-        }
+        let bounds = player.bounds()
+
+        let tl = game.indexCell(bounds.top_left);
+        let br = game.indexCell(bounds.bot_right).addScalar(1);
+
+        let start = new Vec2(tl.x * c.x, tl.y * c.y);
+        let end   = new Vec2( br.x * c.x - start.x, br.y * c.y - start.y );
+
+        game.ctx.beginPath();
+        game.ctx.lineWidth = "2";
+        game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
+        game.ctx.rect( start.x, start.y, end.x, end.y );
+        game.ctx.fill();
     }
 
     this.drawPlayerForward = function () {
@@ -75,7 +76,6 @@ function Helper(game, player){
 
     this.drawPlayerBounds = function (params) {
         let bounds = player.bounds();
-        console.log(bounds);
         game.ctx.beginPath();
         game.ctx.lineWidth = "1";
         game.ctx.strokeStyle = "black";
