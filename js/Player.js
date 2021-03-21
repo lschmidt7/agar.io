@@ -36,6 +36,7 @@ function Player(ctx) {
         this.pos = this.pos.add( this.dir.mul(this.velocity.current) );
 
         document.getElementById('size').innerHTML = "<b>Size:</b> " + this.size.current.toFixed(1);
+        document.getElementById('vel').innerHTML = "<b>Velocity:</b> " + this.velocity.current.toFixed(1);
     }
 
     // player eats a dot
