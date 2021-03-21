@@ -62,10 +62,8 @@
             
             player.draw(game.ctx);
             player.move(game.mousePos);
-    
-            let playerCell = game.indexCell(player.pos);
 
-            game.update(playerCell.x,playerCell.y,player); 
+            game.update(player); 
         }
     
     </script>
