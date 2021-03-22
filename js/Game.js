@@ -84,22 +84,26 @@ function Game(canvasName, cellGrid, f, time){
     // update the player size and velocity
     this.update = function (player) {
 
-        let bounds = player.bounds();
+        for (let p = 0; p < player.clones.length; p++) {
 
-        let tl = game.indexCell(bounds.top_left);
-        let br = game.indexCell(bounds.bot_right);
-        
-        for (let i = tl.x; i <= br.x; i++) {
-            for (let j = tl.y; j <= br.y; j++) {
-                let current_dots = this.dots[j][i];
-                for (let k = 0; k < current_dots.length; k++) {
-                    let d = current_dots[k];
-                    if(d.pos.distance(player.pos) < player.size.current){
-                        this.dots[j][i].splice(k,1);
-                        player.grow(d.size);
+            let bounds = player.clones[p].bounds();
+
+            let tl = game.indexCell(bounds.top_left);
+            let br = game.indexCell(bounds.bot_right);
+            
+            for (let i = tl.x; i <= br.x; i++) {
+                for (let j = tl.y; j <= br.y; j++) {
+                    let current_dots = this.dots[j][i];
+                    for (let k = 0; k < current_dots.length; k++) {
+                        let d = current_dots[k];
+                        if(d.pos.distance(player.clones[p].pos) < player.clones[p].size.current){
+                            this.dots[j][i].splice(k,1);
+                            player.clones[p].grow(d.size);
+                        }
                     }
                 }
             }
+            
         }
     }
 

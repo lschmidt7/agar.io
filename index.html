@@ -39,6 +39,7 @@
     <script src="js/Vec2.js"></script>
     <script src="js/Dot.js"></script>
     <script src="js/Game.js"></script>
+    <script src="js/PlayerClone.js"></script>
     <script src="js/Player.js" ></script>
     <script src="js/EventHandler.js"></script>
     <script src="js/Helper.js"></script>
@@ -49,8 +50,12 @@
         var player = new Player(game.ctx);
         var helper = new Helper(game,player);
 
+        player.init()
+
         eventHandler.init();
-        eventHandler.addKeyPress(' ',game.changeState);
+        eventHandler.addKeyPress('p',game.changeState);
+
+        eventHandler.addKeyPress(' ',player.mitosis);
 
         game.init(500);
     
@@ -60,8 +65,7 @@
 
             helper.draw();
             
-            player.draw();
-            player.move(game.mousePos);
+            player.update(game.mousePos);
 
             game.update(player); 
         }
