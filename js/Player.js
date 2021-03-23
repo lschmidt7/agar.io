@@ -6,7 +6,6 @@
 class Player {
 
     constructor(){
-        this.color = 'green'
 
         this.blobs = []
 
@@ -15,7 +14,7 @@ class Player {
 
     init()
     {
-        this.blobs.push( new Blob(this.color,10) )
+        this.blobs.push( new Blob(Settings.player_color,10) )
     }
 
     update() 

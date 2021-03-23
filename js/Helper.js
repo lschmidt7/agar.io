@@ -68,7 +68,7 @@ class Helper {
     {
         for (let i = 0; i < player.blobs.length; i++) {
             let p = player.blobs[i]
-            Drawer.line("2",player.color,p.pos,p.pos.add(p.dir.mul(p.size.current * 2)))   
+            Drawer.line("2",Settings.player_color,p.pos,p.pos.add(p.dir.mul(p.size.current * 2)))   
         }
     }
 
