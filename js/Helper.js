@@ -37,18 +37,18 @@ class Helper {
     {
         // draw cols
         for (let i = 0; i < game.grid.cols; i++) {
-            Drawer.line("1","black",new Vec2(i * game.grid.cell.x, 0), new Vec2(i * game.grid.cell.x, game.canvas.height))
+            Drawer.line("1","black",new Vec2(i * Settings.grid_cell_size.x, 0), new Vec2(i * Settings.grid_cell_size.x, game.canvas.height))
         }
         // draw rows
         for (let i = 0; i < game.grid.rows; i++) {
-            Drawer.line("1","black",new Vec2(0,i * game.grid.cell.y),new Vec2(game.canvas.width, i * game.grid.cell.y))
+            Drawer.line("1","black",new Vec2(0,i * Settings.grid_cell_size.y),new Vec2(game.canvas.width, i * Settings.grid_cell_size.y))
         }
     }
 
     drawCell () 
     {
         
-        let c = game.grid.cell;
+        let c = Settings.grid_cell_size;
 
         for (let i = 0; i < player.blobs.length; i++) {
             let p = player.blobs[i]

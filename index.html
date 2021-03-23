@@ -36,8 +36,9 @@
             
         </canvas>
     </body>
-    <script src="js/States.js"></script>
     <script src="js/Vec2.js"></script>
+    <script src="js/Settings.js"></script>
+    <script src="js/States.js"></script>
     <script src="js/Dot.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/Drawer.js"></script>
@@ -47,7 +48,7 @@
     <script src="js/Helper.js"></script>
 
     <script>
-        var game = new Game('canvas', new Vec2(100,100),UpdateGame,10);
+        var game = new Game('canvas',UpdateGame);
         var eventHandler = new EventHandler();
         var player = new Player();
         var helper = new Helper(game,player);
@@ -57,12 +58,10 @@
         player.init()
 
         eventHandler.init();
-
         eventHandler.addKeyPress('p',game,game.changeState.name);
-        
         eventHandler.addKeyPress(' ',player,player.mitosis.name);
 
-        game.init(500);
+        game.init();
     
         function UpdateGame() {
             game.clear();
