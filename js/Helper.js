@@ -29,19 +29,12 @@ function Helper(game, player){
 
     this.drawGrid = function () {
         // draw cols
-        game.ctx.strokeStyle = 'black';
         for (let i = 0; i < game.grid.cols; i++) {
-            game.ctx.beginPath();
-            game.ctx.moveTo(i * game.grid.cell.x, 0);
-		    game.ctx.lineTo(i * game.grid.cell.x, game.canvas.height);
-		    game.ctx.stroke();
+            Drawer.line("1","black",new Vec2(i * game.grid.cell.x, 0), new Vec2(i * game.grid.cell.x, game.canvas.height))
         }
         // draw rows
         for (let i = 0; i < game.grid.rows; i++) {
-            game.ctx.beginPath();
-            game.ctx.moveTo(0,i * game.grid.cell.y);
-		    game.ctx.lineTo(game.canvas.width, i * game.grid.cell.y);
-		    game.ctx.stroke();
+            Drawer.line("1","black",new Vec2(0,i * game.grid.cell.y),new Vec2(game.canvas.width, i * game.grid.cell.y))
         }
     }
 
@@ -59,24 +52,14 @@ function Helper(game, player){
             let start = new Vec2(tl.x * c.x, tl.y * c.y);
             let end   = new Vec2( br.x * c.x - start.x, br.y * c.y - start.y );
 
-            game.ctx.beginPath();
-            game.ctx.lineWidth = "2";
-            game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
-            game.ctx.rect( start.x, start.y, end.x, end.y );
-            game.ctx.fill();
+            Drawer.rectFill("2","rgba(0, 255, 0, 0.3)",start,end)
         }
     }
 
     this.drawPlayerForward = function () {
         for (let i = 0; i < player.clones.length; i++) {
             let p = player.clones[i]
-            game.ctx.beginPath();
-            game.ctx.lineWidth = "2";
-            game.ctx.strokeStyle = player.color;
-            game.ctx.moveTo(p.pos.x, p.pos.y);
-            let to = p.pos.add(p.dir.mul(p.size.current * 2));
-            game.ctx.lineTo(to.x,to.y);
-            game.ctx.stroke();   
+            Drawer.line("2",player.color,p.pos,p.pos.add(p.dir.mul(p.size.current * 2)))   
         }
     }
 
@@ -84,11 +67,7 @@ function Helper(game, player){
         for (let i = 0; i < player.clones.length; i++) {
             let p = player.clones[i]
             let bounds = p.bounds();
-            game.ctx.beginPath();
-            game.ctx.lineWidth = "1";
-            game.ctx.strokeStyle = "black";
-            game.ctx.rect(bounds.top_left.x,bounds.top_left.y,p.size.current*2,p.size.current*2);
-            game.ctx.stroke();
+            Drawer.rect("1","black",bounds.top_left,new Vec2(p.size.current,p.size.current).mul(2))
         }
     }
 

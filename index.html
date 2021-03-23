@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="icon" href="img/logo.png" />
         <title>Agar.io</title>
     </head>
     <body onmousemove="game.setMousePos(event)">
@@ -39,6 +40,7 @@
     <script src="js/Vec2.js"></script>
     <script src="js/Dot.js"></script>
     <script src="js/Game.js"></script>
+    <script src="js/Drawer.js"></script>
     <script src="js/PlayerClone.js"></script>
     <script src="js/Player.js" ></script>
     <script src="js/EventHandler.js"></script>
@@ -49,6 +51,8 @@
         var eventHandler = new EventHandler();
         var player = new Player(game.ctx);
         var helper = new Helper(game,player);
+
+        Drawer.ctx = game.ctx
 
         player.init()
 

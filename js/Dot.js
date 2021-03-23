@@ -12,10 +12,7 @@ function Dot(x,y,ctx) {
     this.color = ["blue","magenta","yellow","green","orange"][Math.floor(Math.random()*5)];
 
     this.draw = function () {
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.arc(this.pos.x,this.pos.y, this.size, 0, 2*Math.PI, false);
-        ctx.fill();
+        Drawer.circ(this.color,this.pos,this.size)
     }
 
 }

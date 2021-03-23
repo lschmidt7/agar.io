@@ -22,10 +22,7 @@ function PlayerClone(ctx,color,init_size) {
 
     // draw the player
     this.draw = function () {
-        ctx.beginPath();
-        ctx.fillStyle = color;
-        ctx.arc(this.pos.x,this.pos.y, this.size.current, 0, 2 * Math.PI, false);
-        ctx.fill();
+        Drawer.circ(color,this.pos,this.size.current)
     }
 
     // move player in direction of mouse position
