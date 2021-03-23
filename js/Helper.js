@@ -11,7 +11,7 @@ function Helper(game, player){
         'bounds': false
     }
 
-    this.draw = function () {
+    this.update = function () {
         if(this.draw.grid)
             this.drawGrid();
         if(this.draw.cell)
@@ -42,8 +42,8 @@ function Helper(game, player){
         
         let c = game.grid.cell;
 
-        for (let i = 0; i < player.clones.length; i++) {
-            let p = player.clones[i]
+        for (let i = 0; i < player.blobs.length; i++) {
+            let p = player.blobs[i]
             let bounds = p.bounds()
 
             let tl = game.indexCell(bounds.top_left);
@@ -57,15 +57,15 @@ function Helper(game, player){
     }
 
     this.drawPlayerForward = function () {
-        for (let i = 0; i < player.clones.length; i++) {
-            let p = player.clones[i]
+        for (let i = 0; i < player.blobs.length; i++) {
+            let p = player.blobs[i]
             Drawer.line("2",player.color,p.pos,p.pos.add(p.dir.mul(p.size.current * 2)))   
         }
     }
 
     this.drawPlayerBounds = function (params) {
-        for (let i = 0; i < player.clones.length; i++) {
-            let p = player.clones[i]
+        for (let i = 0; i < player.blobs.length; i++) {
+            let p = player.blobs[i]
             let bounds = p.bounds();
             Drawer.rect("1","black",bounds.top_left,new Vec2(p.size.current,p.size.current).mul(2))
         }

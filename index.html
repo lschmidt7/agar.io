@@ -6,7 +6,7 @@
         <link rel="icon" href="img/logo.png" />
         <title>Agar.io</title>
     </head>
-    <body onmousemove="game.setMousePos(event)">
+    <body onmousemove="player.setMousePos(event)">
         <div id="header">
             <div class="card text-center content">
                 <h5 class="card-header">Settings</h5>
@@ -41,7 +41,7 @@
     <script src="js/Dot.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/Drawer.js"></script>
-    <script src="js/PlayerClone.js"></script>
+    <script src="js/Blob.js"></script>
     <script src="js/Player.js" ></script>
     <script src="js/EventHandler.js"></script>
     <script src="js/Helper.js"></script>
@@ -49,7 +49,7 @@
     <script>
         var game = new Game('canvas', new Vec2(100,100),UpdateGame,10);
         var eventHandler = new EventHandler();
-        var player = new Player(game.ctx);
+        var player = new Player();
         var helper = new Helper(game,player);
 
         Drawer.ctx = game.ctx
@@ -67,9 +67,9 @@
             game.clear();
             game.render();
 
-            helper.draw();
+            helper.update();
             
-            player.update(game.mousePos);
+            player.update();
 
             game.update(player); 
         }

@@ -3,7 +3,7 @@
 //*************************
 
 // player class
-function PlayerClone(ctx,color,init_size) {
+function Blob(color,init_size) {
 
     this.pos = new Vec2(200,200);
     this.dir = new Vec2(0,0);

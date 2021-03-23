@@ -3,35 +3,45 @@
 //*************************
 
 // player class
-function Player(ctx) {
+function Player() {
 
     this.color = 'green'
 
-    this.clones = []
+    this.blobs = []
+
+    // mouse position on screen
+    this.mousePos = new Vec2(0,0);
 
     var self = this
 
     this.init = function () {
-        this.clones.push( new PlayerClone(ctx,this.color,10) )
+        this.blobs.push( new Blob(this.color,10) )
     }
 
-    this.update = function(target) {
-        for (let i = 0; i < this.clones.length; i++) {
-            this.clones[i].draw()
-            this.clones[i].move(target)
+    this.update = function() {
+        for (let i = 0; i < this.blobs.length; i++) {
+            this.blobs[i].draw()
+            this.blobs[i].move(this.mousePos)
         }
     }
 
     this.mitosis = function () {
         let threshold = 20
-        let len = self.clones.length
+        let len = self.blobs.length
         for (let i = 0; i < len; i++) {
-            if(self.clones[i].size.current > threshold)
+            if(self.blobs[i].size.current > threshold)
             {
-                self.clones[i].size.current /= 2
-                self.clones.push(new PlayerClone(ctx,self.color,self.clones[i].size.current))
+                self.blobs[i].size.current /= 2
+                self.blobs.push(new Blob(self.color,self.blobs[i].size.current))
             }
         }
+    }
+
+    // set mousePos each frame
+    this.setMousePos = function (event)
+    {
+        this.mousePos.x = event.clientX, 
+        this.mousePos.y = event.clientY;
     }
 
     this.updateInfo = function () {

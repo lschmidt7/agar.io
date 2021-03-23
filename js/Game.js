@@ -18,8 +18,7 @@ function Game(canvasName, cellGrid, f, time){
     this.f = f;
     this.time = time;
 
-    // mouse position on screen
-    this.mousePos = new Vec2(0,0);
+    
 
     // array of dots
     this.dots = [];
@@ -35,13 +34,6 @@ function Game(canvasName, cellGrid, f, time){
     // clear screen to redraw
     this.clear = function () {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-
-    // set mousePos each frame
-    this.setMousePos = function (event)
-    {
-        this.mousePos.x = event.clientX, 
-        this.mousePos.y = event.clientY;
     }
 
     // spawn dots
@@ -84,9 +76,9 @@ function Game(canvasName, cellGrid, f, time){
     // update the player size and velocity
     this.update = function (player) {
 
-        for (let p = 0; p < player.clones.length; p++) {
+        for (let p = 0; p < player.blobs.length; p++) {
 
-            let bounds = player.clones[p].bounds();
+            let bounds = player.blobs[p].bounds();
 
             let tl = game.indexCell(bounds.top_left);
             let br = game.indexCell(bounds.bot_right);
@@ -96,9 +88,9 @@ function Game(canvasName, cellGrid, f, time){
                     let current_dots = this.dots[j][i];
                     for (let k = 0; k < current_dots.length; k++) {
                         let d = current_dots[k];
-                        if(d.pos.distance(player.clones[p].pos) < player.clones[p].size.current){
+                        if(d.pos.distance(player.blobs[p].pos) < player.blobs[p].size.current){
                             this.dots[j][i].splice(k,1);
-                            player.clones[p].grow(d.size);
+                            player.blobs[p].grow(d.size);
                         }
                     }
                 }
