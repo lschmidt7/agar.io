@@ -44,7 +44,6 @@ function PlayerClone(ctx,color,init_size) {
         {
             this.velocity.current -= this.velocity.decay_rate
         }
-        console.log(this.size.current)
     }
 
     // gets the bounds coordinates of player

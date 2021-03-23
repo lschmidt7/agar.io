@@ -49,38 +49,47 @@ function Helper(game, player){
         
         let c = game.grid.cell;
 
-        let bounds = player.bounds()
+        for (let i = 0; i < player.clones.length; i++) {
+            let p = player.clones[i]
+            let bounds = p.bounds()
 
-        let tl = game.indexCell(bounds.top_left);
-        let br = game.indexCell(bounds.bot_right).addScalar(1);
+            let tl = game.indexCell(bounds.top_left);
+            let br = game.indexCell(bounds.bot_right).addScalar(1);
 
-        let start = new Vec2(tl.x * c.x, tl.y * c.y);
-        let end   = new Vec2( br.x * c.x - start.x, br.y * c.y - start.y );
+            let start = new Vec2(tl.x * c.x, tl.y * c.y);
+            let end   = new Vec2( br.x * c.x - start.x, br.y * c.y - start.y );
 
-        game.ctx.beginPath();
-        game.ctx.lineWidth = "2";
-        game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
-        game.ctx.rect( start.x, start.y, end.x, end.y );
-        game.ctx.fill();
+            game.ctx.beginPath();
+            game.ctx.lineWidth = "2";
+            game.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
+            game.ctx.rect( start.x, start.y, end.x, end.y );
+            game.ctx.fill();
+        }
     }
 
     this.drawPlayerForward = function () {
-        game.ctx.beginPath();
-        game.ctx.lineWidth = "2";
-        game.ctx.strokeStyle = player.color;
-        game.ctx.moveTo(player.pos.x, player.pos.y);
-        let to = player.pos.add(player.dir.mul(player.size.current * 2));
-        game.ctx.lineTo(to.x,to.y);
-        game.ctx.stroke();
+        for (let i = 0; i < player.clones.length; i++) {
+            let p = player.clones[i]
+            game.ctx.beginPath();
+            game.ctx.lineWidth = "2";
+            game.ctx.strokeStyle = player.color;
+            game.ctx.moveTo(p.pos.x, p.pos.y);
+            let to = p.pos.add(p.dir.mul(p.size.current * 2));
+            game.ctx.lineTo(to.x,to.y);
+            game.ctx.stroke();   
+        }
     }
 
     this.drawPlayerBounds = function (params) {
-        let bounds = player.bounds();
-        game.ctx.beginPath();
-        game.ctx.lineWidth = "1";
-        game.ctx.strokeStyle = "black";
-        game.ctx.rect(bounds.top_left.x,bounds.top_left.y,player.size.current*2,player.size.current*2);
-        game.ctx.stroke();
+        for (let i = 0; i < player.clones.length; i++) {
+            let p = player.clones[i]
+            let bounds = p.bounds();
+            game.ctx.beginPath();
+            game.ctx.lineWidth = "1";
+            game.ctx.strokeStyle = "black";
+            game.ctx.rect(bounds.top_left.x,bounds.top_left.y,p.size.current*2,p.size.current*2);
+            game.ctx.stroke();
+        }
     }
 
 }
