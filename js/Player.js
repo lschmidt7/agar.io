@@ -3,48 +3,51 @@
 //*************************
 
 // player class
-function Player() {
+class Player {
 
-    this.color = 'green'
+    constructor(){
+        this.color = 'green'
 
-    this.blobs = []
+        this.blobs = []
 
-    // mouse position on screen
-    this.mousePos = new Vec2(0,0);
+        this.mousePos = new Vec2(0,0);
+    }
 
-    var self = this
-
-    this.init = function () {
+    init()
+    {
         this.blobs.push( new Blob(this.color,10) )
     }
 
-    this.update = function() {
+    update() 
+    {
         for (let i = 0; i < this.blobs.length; i++) {
             this.blobs[i].draw()
             this.blobs[i].move(this.mousePos)
         }
     }
 
-    this.mitosis = function () {
+    mitosis()
+    {
         let threshold = 20
-        let len = self.blobs.length
+        let len = this.blobs.length
         for (let i = 0; i < len; i++) {
-            if(self.blobs[i].size.current > threshold)
+            if(this.blobs[i].size.current > threshold)
             {
-                self.blobs[i].size.current /= 2
-                self.blobs.push(new Blob(self.color,self.blobs[i].size.current))
+                this.blobs[i].size.current /= 2
+                this.blobs.push(new Blob(this.color,this.blobs[i].size.current))
             }
         }
     }
 
     // set mousePos each frame
-    this.setMousePos = function (event)
+    setMousePos(event)
     {
         this.mousePos.x = event.clientX, 
         this.mousePos.y = event.clientY;
     }
 
-    this.updateInfo = function () {
+    updateInfo()
+    {
         document.getElementById('size').innerHTML = "<b>Size:</b> " + this.size.current.toFixed(1);
         document.getElementById('vel').innerHTML = "<b>Velocity:</b> " + this.velocity.current.toFixed(1);
     }

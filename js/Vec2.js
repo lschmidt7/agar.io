@@ -3,55 +3,68 @@
 //*************************
 
 // class o Vector in 2D space
-function Vec2(x,y) {
-    this.x = x;
-    this.y = y;
+class Vec2 {
 
-    this.add = function (v) {
+    constructor(x,y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    add (v) 
+    {
         let x = this.x + v.x;
         let y = this.y + v.y;
         return new Vec2(x,y);
     }
 
-    this.sub = function (v) {
+    sub (v) 
+    {
         let x = this.x - v.x;
         let y = this.y - v.y;
         return new Vec2(x,y);
     }
 
-    this.addScalar = function (v) {
+    addScalar (v) 
+    {
         let x = this.x + v;
         let y = this.y + v;
         return new Vec2(x,y);
     }
 
-    this.subScalar = function (v) {
+    subScalar (v) 
+    {
         let x = this.x - v;
         let y = this.y - v;
         return new Vec2(x,y);
     }
 
-    this.mul = function (h) {
+    mul (h) 
+    {
         let x = this.x * h;
         let y = this.y * h;
         return new Vec2(x,y);
     }
 
-    this.div = function (h) {
+    div (h) 
+    {
         let x = this.x / h;
         let y = this.y / h;
         return new Vec2(x,y);
     }
 
-    this.mag = function () {
+    mag ()
+    {
         return Math.sqrt(this.x*this.x + this.y*this.y);
     }
 
-    this.normalize = function () {
+    normalize () 
+    {
         return this.div(this.mag());
     }
 
-    this.distance = function (v) {
+    distance (v)
+    {
         return Math.sqrt( Math.pow(v.x - this.x , 2) + Math.pow(v.y - this.y , 2) );
     }
 

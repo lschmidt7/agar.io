@@ -3,15 +3,18 @@
 //*************************
 
 // class of Dots
-function Dot(x,y,ctx) {
-    
-    this.pos = new Vec2(x,y);
+class Dot {
 
-    this.size = 2;//Math.random() * 2 + 1;
+    constructor(x,y,ctx)
+    {
+        this.pos = new Vec2(x,y)
+        this.ctx = ctx
+        this.size = 2
+        this.color = ["blue","magenta","yellow","green","orange"][Math.floor(Math.random()*5)]
+    }
 
-    this.color = ["blue","magenta","yellow","green","orange"][Math.floor(Math.random()*5)];
-
-    this.draw = function () {
+    draw()
+    {
         Drawer.circ(this.color,this.pos,this.size)
     }
 

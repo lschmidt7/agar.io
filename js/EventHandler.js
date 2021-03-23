@@ -2,24 +2,27 @@
 // author: Leonardo Schmidt
 //*************************
 
-function EventHandler() {
+class EventHandler {
 
-    this.keyPressEvents = {};
-
-    var self = this;
-
-    this.init = function () {
-        document.addEventListener( "keypress", this.onKeyPress, true );
+    constructor()
+    {
+        this.keyPressEvents = {}
     }
 
-    this.addKeyPress = function (key,f) {
-        this.keyPressEvents[key.toString()] = f;
+    init () {
+        document.addEventListener( "keypress", this.onKeyPress.bind(this), true );
     }
 
-    this.onKeyPress = function (e) {
-        if(self.keyPressEvents[e.key] != undefined)
+    addKeyPress (key,obj,method_name)
+    {
+        this.keyPressEvents[key.toString()] = {"obj": obj, "method": method_name}
+    }
+
+    onKeyPress (e) {
+        if(this.keyPressEvents[e.key] != undefined)
         {
-            self.keyPressEvents[e.key].call();
+            let r = this.keyPressEvents[e.key]
+            r.obj[r.method]()
         }
     }
 

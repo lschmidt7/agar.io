@@ -2,16 +2,22 @@
 // author: Leonardo Schmidt
 //*************************
 
-function Helper(game, player){
+class Helper {
 
-    this.draw = {
-        'grid'  : false,
-        'cell'  : false,
-        'dir'   : false,
-        'bounds': false
+    constructor (game, player)
+    {
+        this.game = game
+        this.player = player
+        this.draw = {
+            'grid'  : false,
+            'cell'  : false,
+            'dir'   : false,
+            'bounds': false
+        }
     }
 
-    this.update = function () {
+    update () 
+    {
         if(this.draw.grid)
             this.drawGrid();
         if(this.draw.cell)
@@ -22,12 +28,13 @@ function Helper(game, player){
             this.drawPlayerBounds();
     }
 
-    this.changeDraw = function (field)
+    changeDraw (field)
     {
         this.draw[field] = !this.draw[field];
     }
 
-    this.drawGrid = function () {
+    drawGrid () 
+    {
         // draw cols
         for (let i = 0; i < game.grid.cols; i++) {
             Drawer.line("1","black",new Vec2(i * game.grid.cell.x, 0), new Vec2(i * game.grid.cell.x, game.canvas.height))
@@ -38,7 +45,8 @@ function Helper(game, player){
         }
     }
 
-    this.drawCell = function () {
+    drawCell () 
+    {
         
         let c = game.grid.cell;
 
@@ -56,14 +64,16 @@ function Helper(game, player){
         }
     }
 
-    this.drawPlayerForward = function () {
+    drawPlayerForward () 
+    {
         for (let i = 0; i < player.blobs.length; i++) {
             let p = player.blobs[i]
             Drawer.line("2",player.color,p.pos,p.pos.add(p.dir.mul(p.size.current * 2)))   
         }
     }
 
-    this.drawPlayerBounds = function (params) {
+    drawPlayerBounds () 
+    {
         for (let i = 0; i < player.blobs.length; i++) {
             let p = player.blobs[i]
             let bounds = p.bounds();

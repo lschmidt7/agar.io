@@ -57,9 +57,10 @@
         player.init()
 
         eventHandler.init();
-        eventHandler.addKeyPress('p',game.changeState);
 
-        eventHandler.addKeyPress(' ',player.mitosis);
+        eventHandler.addKeyPress('p',game,game.changeState.name);
+        
+        eventHandler.addKeyPress(' ',player,player.mitosis.name);
 
         game.init(500);
     
