@@ -14,7 +14,7 @@ class Player {
 
     init()
     {
-        this.blobs.push( new Blob(Settings.player_color,10) )
+        this.blobs.push( new Blob(Settings.player_color,10,new Vec2(200,200)) )
     }
 
     update() 

@@ -5,10 +5,10 @@
 // player class
 class Blob {
 
-    constructor(color,size) 
+    constructor(color,size,pos) 
     {
         this.color = color
-        this.pos = new Vec2(200,200);
+        this.pos = pos
         this.dir = new Vec2(0,0);
         this.size = {
             current: size,
