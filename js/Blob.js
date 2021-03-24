@@ -18,7 +18,7 @@ class Blob {
             current: 1,
             min: 0.2,
             max: 1,
-            decay_rate: 0.01
+            rate: 0.01
         }
     }
 
@@ -40,12 +40,12 @@ class Blob {
     // player lose velocity according to the decay rate
     grow (dotSize)
     {
-        this.size.current += this.size.grow_rate * dotSize;
+        this.size.current += this.size.grow_rate * dotSize
+
+        this.velocity.current = 1 - (this.size.current / 300)
+
+        this.velocity.current = Mathf.clamp(this.velocity.current,this.velocity.min,this.velocity.max)
         
-        if( this.velocity.current - this.velocity.decay_rate > this.velocity.min )
-        {
-            this.velocity.current -= this.velocity.decay_rate
-        }
     }
 
     // gets the bounds coordinates of player

@@ -27,10 +27,9 @@ class Player {
 
     mitosis()
     {
-        let threshold = 20
         let len = this.blobs.length
         for (let i = 0; i < len; i++) {
-            if(this.blobs[i].size.current > threshold)
+            if(this.blobs[i].size.current > Settings.mitosis_threshold)
             {
                 this.blobs[i].size.current /= 2
                 this.blobs.push(new Blob(this.color,this.blobs[i].size.current))
