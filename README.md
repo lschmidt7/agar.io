@@ -14,3 +14,4 @@ Tarefas
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Realizar a divisão
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Adicionar os espinhos
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Adicionar players com IA
+- :heavy_check_mark:
