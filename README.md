@@ -2,7 +2,7 @@
 
 Tarefas
 
-- ![#29a329]Player render
+- ![#29a329](https://via.placeholder.com/15/29a329/000000?text=+) Player render
 - Player movimento
 - Pause do jogo
 - Dispersão de points
