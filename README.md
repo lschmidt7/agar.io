@@ -2,7 +2,7 @@
 
 Tarefas
 
-- ![#29a329](https://via.placeholder.com/15/29a329/000000?text=+) Player render
+- ![alt text](https://consultoriacontatto.com.br/wp-content/uploads/2019/05/604a0cadf94914c7ee6c6e552e9b4487-curved-check-mark-circle-icon-by-vexels.png "ok") Player render
 - Player movimento
 - Pause do jogo
 - Dispersão de points
