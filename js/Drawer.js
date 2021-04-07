@@ -43,4 +43,9 @@ class Drawer
         Drawer.ctx.stroke();   
     }
 
+    static img(x,y,img)
+    {
+        Drawer.ctx.drawImage(img,x,y);
+    }
+
 }

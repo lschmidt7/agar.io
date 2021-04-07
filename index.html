@@ -47,12 +47,15 @@
     <script src="js/Player.js" ></script>
     <script src="js/EventHandler.js"></script>
     <script src="js/Helper.js"></script>
+    <script src="js/Virus.js"></script>
 
     <script>
         var game = new Game('canvas',UpdateGame);
         var eventHandler = new EventHandler();
         var player = new Player();
         var helper = new Helper(game,player);
+
+        var virus = new Virus(500,200,game.ctx);
 
         Drawer.ctx = game.ctx
 
@@ -67,6 +70,8 @@
         function UpdateGame() {
             game.clear();
             game.render();
+
+            virus.draw();
 
             helper.update();
             
