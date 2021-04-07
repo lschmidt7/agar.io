@@ -17,11 +17,11 @@ class Player {
         this.blobs.push( new Blob(Settings.player_color,10,new Vec2(200,200)) )
     }
 
-    update() 
+    update()
     {
         for (let i = 0; i < this.blobs.length; i++) {
             this.blobs[i].draw()
-            this.blobs[i].move(this.mousePos)
+            this.blobs[i].move(this.mousePos,this.blobs,i)
         }
     }
 

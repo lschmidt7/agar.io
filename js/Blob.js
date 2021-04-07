@@ -29,10 +29,30 @@ class Blob {
     }
 
     // move player in direction of mouse position
-    move(target)
+    move(target,blobs,index)
     {
         this.dir = target.sub(this.pos).normalize();
-        this.pos = this.pos.add( this.dir.mul(this.velocity.current) );
+        let newPos = this.pos.add( this.dir.mul(this.velocity.current) );
+        if(!this.conflict(newPos,blobs,index))
+        {
+            this.pos = newPos
+        }
+    }
+
+    conflict(npos,blobs,index)
+    {
+        for (let i = 0; i < blobs.length; i++) {
+            if(i!=index)
+            {
+                let total_radius = blobs[index].size.current + blobs[i].size.current
+                let dist = npos.distance(blobs[i].pos)
+                if(dist < total_radius)
+                {
+                    return true
+                }
+            }
+        }
+        return false
     }
 
     // player eats a dot

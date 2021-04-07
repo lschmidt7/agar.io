@@ -14,5 +14,5 @@ class Settings {
 
     // PLAYER
     static player_color = 'green'
-    static mitosis_threshold = 20
+    static mitosis_threshold = 10
 }
