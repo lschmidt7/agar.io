@@ -32,7 +32,7 @@ class Player {
             if(this.blobs[i].size.current > Settings.mitosis_threshold)
             {
                 this.blobs[i].size.current /= 2
-                this.blobs.push(new Blob(this.color,this.blobs[i].size.current))
+                this.blobs.push(new Blob(this.color,this.blobs[i].size.current,new Vec2(100,100)))
             }
         }
     }
