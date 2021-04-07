@@ -11,6 +11,7 @@ Tarefas
 - :heavy_check_mark: Helper com exibição das células atingidas no grid
 - :heavy_check_mark: Score board
 - :heavy_check_mark: Verificar pontos atingidos em celulas vizinhas
-- :clock3: Realizar a divisão
+- :heavy_check_mark: Realizar a divisão
+- :heavy_check_mark: Evitar sobreposição de blobs de um player
 - :clock3: Adicionar os espinhos
 - :clock3: Adicionar players com IA
